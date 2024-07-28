@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ produto.nome }}</title>
+    <link rel="stylesheet" href="{% static 'telegram_bot/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ produto.nome }}</h1>
+        <img src="{% static produto.imagem %}" alt="{{ produto.nome }}" style="width: 200px; height: 200px; object-fit: cover;">
+        <p>{{ produto.descricao }}</p>
+        <form id="orderForm">
+            <label for="address">Insira seu endereço:</label>
+            <input type="text" id="address" name="address" required>
+            <input type="hidden" id="command" name="command" value="{{ produto.nome }}">
+            <button type="button" onclick="sendOrder()">Pedir {{ produto.nome }}</button>
+        </form>
+    </div>
+    <script>
+        function sendOrder() {
+            const form = document.getElementById('orderForm');
+            const formData = new FormData(form);
+
+            fetch('/send_command?' + new URLSearchParams(formData), {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ocorreu um erro');
+            });
+        }
+    </script>
+</body>
+</html>

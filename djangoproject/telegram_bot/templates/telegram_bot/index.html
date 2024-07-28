@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santo's Burguer</title>
+    <link rel="stylesheet" href="{% static 'telegram_bot/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao Santo's Burguer</h1>
+        <p>O que você quer pedir hoje?</p>
+        <div class="product">
+            <img src="{% static 'telegram_bot/duplo_cheddar.jpeg' %}" alt="Duplo Cheddar">
+            <a href="{% url 'produto_detalhe' 'Duplocheddar' %}">Duplo Cheddar</a>
+        </div>
+        <div class="product">
+            <img src="{% static 'telegram_bot/especial_da_casa.png' %}" alt="Especial da Casa">
+            <a href="{% url 'produto_detalhe' 'Especial_da_casa' %}">Especial da Casa</a>
+        </div>
+        <div class="product">
+            <img src="{% static 'telegram_bot/artesanal.png' %}" alt="Artesanal">
+            <a href="{% url 'produto_detalhe' 'Artesanal' %}">Artesanal</a>
+        </div>
+        <div class="product">
+            <img src="{% static 'telegram_bot/chicken_catupiry.png' %}" alt="Chicken Catupiry">
+            <a href="{% url 'produto_detalhe' 'chicken_catupiry' %}">Chicken Catupiry</a>
+        </div>
+        <div class="product">
+            <img src="{% static 'telegram_bot/stacker_duplo_bacon.png' %}" alt="Chicken Catupiry">
+            <a href="{% url 'produto_detalhe' 'stacker_duplo_bacon' %}">Stacker Duplo Bacon</a>
+        </div>
+    </div>
+</body>
+</html>
